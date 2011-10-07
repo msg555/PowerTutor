@@ -1,0 +1,8 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:configure="edu.umich.PowerTutor.widget.Configure"
+    android:minWidth="294dp"
+    android:minHeight="72dp"
+    android:updatePeriodMillis="0"
+    android:initialLayout="@layout/widget_layout"
+    >
+</appwidget-provider>

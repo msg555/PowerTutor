@@ -1,0 +1,30 @@
+<resources>
+  <string-array name="xaxis">
+    <item>Last 10 seconds</item>
+    <item>Last 30 seconds</item>
+    <item>Last 1 minute</item>
+    <item>Last 2 minutes</item>
+    <item>Last 5 minutes</item>
+  </string-array>
+  <integer-array name="xaxis_secs">
+    <item>10</item>
+    <item>30</item>
+    <item>60</item>
+    <item>120</item>
+    <item>300</item>
+  </integer-array>
+  <string-array name="xaxis_secs_str">
+    <item>10</item>
+    <item>30</item>
+    <item>60</item>
+    <item>120</item>
+    <item>300</item>
+  </string-array>
+  <string-array name="freq">
+    <item>Every 1 second</item>
+    <item>Every 3 seconds</item>
+    <item>Every 6 seconds</item>
+    <item>Every 12 seconds</item>
+    <item>Every 30 seconds</item>
+  </string-array>
+</resources>

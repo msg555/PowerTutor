@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PowerTutor</string>
+    <string name="running_on_startup">The Power Profiler will now run after your phone starts up.</string>
+    <string name="not_running_on_startup">The Power Profiler will no longer run on when your phone starts up.</string>
+    <string name="stop_sending_text">This application sends data on power utilization and running applications to the PowerTutor team. We gather nothing allowing us to associate the data with you or your phone; a cryptographically secure hash function is used to protect your identity.  Pressing \'Stop\' will prevent these data from being sent.</string>
+    <string name="start_sending_text">This application sends data on power utilization and running applications to the PowerTutor team. We gather nothing allowing us to associate the data with you or your phone; a cryptographically secure hash function is used to protect your identity.  Pressing \'Start\' will start sending the data from now on.</string>
+    <string name="unknown_phone">Your phone type is not recognized by PowerTutor. You may continue to use PowerTutor however we may not be able to get all of the data for your phone and the power calculations may not be accurate.</string>
+    <string name="term">
+    <p>In this version of PowerTutor the Power Profiler service is run on
+startup and power consumption traces are sent back to the PowerTutor team.  This
+helps us identify common power consumption problems for real applications.  The
+information will be used to improve PowerTutor and recommend power efficiency
+improvements to other software, with the end goal of increasing your phone\'s
+battery life.\n</p>\n
+    <p>We gather\n
+	- CPU use\n
+	- Amount of WiFi/3G traffic (not its content)\n
+	- Screen brightness\n
+	- GPS activity (but not location)\n
+  - Audio use (on/off, volume)\n
+	- Total power consumption\n
+	- Application resource utilization\n
+	- Phone mode, e.g., airplane mode or call status\n
+</p>
+    <p>\nWe do <b>NOT</b> gather any of your personal data used in applications
+or phone call logs. None of these data will be associate with you or your phone.
+We use a cryptographically secure hash function to protect your identity.\n
+</p>\n
+    <p>PowerTutor will send back traces only when the phone is plugged in and
+will prefer to use Wifi to send back the traces, although your carrier\'s data
+service will be used if Wifi is rarely available.  If you would like to disable
+sending traces you can do so in the menu or by turning off background data in
+the android options.
+    </p></string>
+    <string name ="help_head"> <big><b>PowerTutor</b></big> - A real-time system and application power monitor.</string>
+    <string name ="help_text">\n
+    <ul>
+    <li><b>Main control panel</b>\n
+     - Start/stop profiling services. \n
+     - Select <b>Application</b> or <b>System</b> mode to check out power consumption statistics.\n
+     - Menu features:\n
+        \t* Start/stop sending power traces to the PowerTutor team.\n
+        \t* Enable/Disable the profiling service to run on startup.\n
+        \t* Save the current power trace to the sdcard.\n
+    </li>\n
+          <li><b>App View</b>\n
+     - Displays power usage information for all of the apps running on the
+           phone.\n
+     - Press an app row to go to the <i>Graph View</i> for that app\'s power
+           usage.\n
+     - Press a hardware component name in the top tabs to include/exclude it from power
+            calculations.\n
+     - Data interpretation:\n
+        \t* Percentage value: The percentage of energy/average power consumed by the 
+            app in system.\n
+        \t* Time value: Time that the app has been actively monitored by PowerTutor.\n
+     - Menu features:\n
+        \t* Change the sort key to one of current power, average power, or total energy usage.\n
+        \t* Change the time span to include the last minute, hour, day, or all time.\n
+    </li>\n
+    <li><b>Graph View</b>\n
+     - Displays app/system power consumption decomposed by hardware component.\n
+     - Use the tabs at the top to move between <i>Chart View</i> and <i>Pie
+       View</i>.\n
+    </li>\n
+    <li><b>Chart View</b>\n
+     - Displays the power usage of different components on the phone in recent
+           history.\n
+     - Scroll to view different component power graphs.\n
+     - Menu features:\n
+        \t* Select \"<i>Set History Size</i>\" to adjust the number of data points
+           displayed.\n
+        \t* Select \"<i>Magnify Recent Data</i>\" to show more recent data points
+           more spread out.\n
+        \t* Select \"<i>Pause</i>\" to freeze the display as is, select resume to
+           continue.\n
+    </li>\n
+    <li><b>Pie View</b>\n
+     - Displays the power usage percentages of the different components.\n
+     - Menu features:\n
+        \t* Change the time span to include the last minute, hour, day, or all time.\n
+    </li>\n
+    </ul>
+    </string>
+
+
+<string name="url_1">For detailed information, please go to: </string>
+<string name="url_2"><a href = "http://powertutor.org">http://powertutor.org</a>.\n</string>
+</resources>

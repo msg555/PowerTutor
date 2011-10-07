@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="14dp"
+    android:paddingRight="14dp"
+    android:paddingTop="17dp"
+    android:paddingBottom="17dp"
+    android:background="@drawable/widget_bg"
+  >
+  <ImageView android:id="@+id/power_button"
+      android:layout_width="fill_parent" 
+      android:layout_height="fill_parent" 
+      android:layout_weight="0.25"
+      android:paddingRight="3dp"
+      android:src="@drawable/power_off"
+      android:clickable="true"
+      android:scaleType="centerInside"
+    />
+  <TextView android:id="@+id/text_minute"
+      android:layout_width="fill_parent" 
+      android:layout_height="fill_parent" 
+      android:layout_weight="0.25"
+      android:paddingRight="3dp"
+      android:gravity="center"
+    />
+  <TextView android:id="@+id/text_hour"
+      android:layout_width="fill_parent" 
+      android:layout_height="fill_parent" 
+      android:layout_weight="0.25"
+      android:paddingRight="3dp"
+      android:gravity="center"
+    />
+  <TextView android:id="@+id/text_day"
+      android:layout_width="fill_parent" 
+      android:layout_height="fill_parent" 
+      android:layout_weight="0.25"
+      android:paddingRight="3dp"
+      android:gravity="center"
+    />
+</LinearLayout>
