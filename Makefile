@@ -25,7 +25,7 @@ dex: compile
 	dx --dex --output=bin/classes.dex bin/ libs/
 
 package: dex
-	aapt package -M AndroidManifest.xml -A assets -S res \
+	aapt package -M AndroidManifest.xml -S res \
        -F bin/PowerTutor.apk -I $(ANDROID_LIB)
 	cd bin; zip PowerTutor.apk classes.dex
 	zip bin/PowerTutor.apk -r libs -i \*.so
