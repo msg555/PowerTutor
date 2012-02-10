@@ -161,6 +161,8 @@ public class PowerEstimator implements Runnable {
       }
     }
 
+    double lastCurrent = -1;
+
     /* Indefinitely collect data on each of the power components. */
     boolean firstLogIteration = true;
     for(long iter = -1; !Thread.interrupted(); ) {
@@ -276,10 +278,14 @@ public class PowerEstimator implements Runnable {
         PowerWidget.updateWidget(context, this);
       }
 
-      if(iter % (5*60) == 0) {
-        if(bst.hasCurrent()) {
-          writeToLog("batt_current " + bst.getCurrent() + "\n");
+      if(bst.hasCurrent()) {
+        double current = bst.getCurrent();
+        if(current != lastCurrent) {
+          writeToLog("batt_current " + current + "\n");
+          lastCurrent = current;
         }
+      }
+      if(iter % (5*60) == 0) {
         if(bst.hasTemp()) {
           writeToLog("batt_temp " + bst.getTemp() + "\n");
         }
