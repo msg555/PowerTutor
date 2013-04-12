@@ -1,7 +1,7 @@
 all: package
 
 ANDROID_LIB=android-9.jar
-CLASSPATH=$(ANDROID_LIB):libs/achartengine-0.7.0.jar:libs/com.artfulbits.aiCharts.jar
+CLASSPATH=$(ANDROID_LIB):libs/achartengine-1.0.0.jar
 
 genres:
 	mkdir -p gen bin
