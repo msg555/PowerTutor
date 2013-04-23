@@ -42,6 +42,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -141,8 +142,14 @@ public class PowerViewer extends Activity {
        height of 0 so this is important. */
     chartLayout.setMinimumHeight(100 * components);
 
-    ScrollView scrollView = new ScrollView(this);
+    ScrollView scrollView = new ScrollView(this) {
+      public boolean onInterceptTouchEvent(android.view.MotionEvent ev) {
+        return true;
+      }
+    };
+
     scrollView.addView(chartLayout);
+    scrollView.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
     setContentView(scrollView);
   }
 
