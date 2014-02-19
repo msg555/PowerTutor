@@ -127,14 +127,15 @@ public class Wifi extends PowerComponent {
     wifiState = new WifiStateKeeper(phoneConstants.wifiHighLowTransition(),
                                     phoneConstants.wifiLowHighTransition());
     uidStates = new SparseArray<WifiStateKeeper>();
-    transPacketsFile = "/sys/devices/virtual/net/" +
-                       interfaceName + "/statistics/tx_packets";
-    readPacketsFile = "/sys/devices/virtual/net/" +
-                      interfaceName + "/statistics/rx_packets";
-    transBytesFile = "/sys/devices/virtual/net/" +
-                     interfaceName + "/statistics/tx_bytes";
-    readBytesFile = "/sys/devices/virtual/net/" +
-                    interfaceName + "/statistics/rx_bytes";
+    String directory="/sys/class/net/";
+    transPacketsFile = directory + interfaceName
+        + "/statistics/tx_packets";
+    readPacketsFile = directory + interfaceName
+        + "/statistics/rx_packets";
+    transBytesFile = directory + interfaceName
+        + "/statistics/tx_bytes";
+    readBytesFile = directory + interfaceName
+        + "/statistics/rx_bytes";
     uidStatsFolder = new File("/proc/uid_stat");
   }
 
