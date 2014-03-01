@@ -31,6 +31,10 @@ import com.henny.PowerTutor2.service.PowerEstimator;
 import com.henny.PowerTutor2.service.UMLoggerService;
 import com.henny.PowerTutor2.util.SystemInfo;
 
+
+
+
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -55,7 +59,9 @@ import android.widget.TextView;
 
 public class PowerViewer extends Activity {
   private static final String TAG = "PowerViewer";
-
+  
+  
+  
   private SharedPreferences prefs;
   private int uid;
 
@@ -74,6 +80,8 @@ public class PowerViewer extends Activity {
   private Handler handler;
   private LinearLayout chartLayout;
 
+  
+  
   public void refreshView() {
     if(counterService == null) {
       TextView loadingText = new TextView(this);
@@ -180,6 +188,7 @@ public class PowerViewer extends Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    
     prefs = PreferenceManager.getDefaultSharedPreferences(this);
     uid = getIntent().getIntExtra("uid", SystemInfo.AID_ALL);
 

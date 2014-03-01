@@ -5,8 +5,4 @@
     android:key="runOnStartup"
     android:title="Run on startup"
     android:summary="Have the profiling service start when your phone starts" />
-  <CheckBoxPreference
-    android:key="sendPermission"
-    android:title="Send logs"
-    android:summary="Send back power traces to the PowerTutor team" />
 </PreferenceScreen>
