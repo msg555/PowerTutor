@@ -29,7 +29,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
@@ -43,7 +42,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 
-import com.henny.PowerTutor2.ui.PowerTabs;
+
 import com.henny.PowerTutor2.ui.UMLogger;
 import com.henny.PowerTutor2.util.BatteryStats;
 import com.henny.PowerTutor2.util.SystemInfo;
@@ -70,6 +69,7 @@ public class UMLoggerService extends Service{
   
   @Override
   public void onCreate() {
+	  Log.i(TAG,"onCreate Service");
     powerEstimator = new PowerEstimator(this);
     
     /* Register to receive phone state messages. */

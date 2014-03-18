@@ -27,16 +27,11 @@ import android.util.SparseArray;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Map;
-import java.util.TreeMap;
 
 import com.henny.PowerTutor2.service.IterationData;
 import com.henny.PowerTutor2.service.PowerData;
 import com.henny.PowerTutor2.util.NotificationService;
 import com.henny.PowerTutor2.util.Recycler;
-import com.henny.PowerTutor2.util.SystemInfo;
 
 public class Sensors extends PowerComponent {
 	private final String TAG = "Sensors";

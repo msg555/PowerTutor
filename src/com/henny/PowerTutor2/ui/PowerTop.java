@@ -47,7 +47,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -76,6 +75,8 @@ public class PowerTop extends Activity implements Runnable {
 	private static final CharSequence[] KEY_NAMES = { "Current power",
 			"Average power", "Energy usage" };
 
+	private final boolean pro=true;
+	
 	private SharedPreferences prefs;
 	private int noUidMask;
 	private String[] componentNames;
@@ -107,29 +108,31 @@ public class PowerTop extends Activity implements Runnable {
 
 		// AdView
 		adView = new AdView(this);
-		adView.setAdUnitId(ADD_ID);
-		adView.setAdSize(AdSize.BANNER);
+		
 
 		topGroup = new LinearLayout(this);
 		topGroup.setOrientation(LinearLayout.VERTICAL);
-
-		// Initiate a generic request.
-		AdRequest adRequest = new AdRequest.Builder().build();
-		// Load the adView with the ad request.
-		adView.loadAd(adRequest);
-
+		
+		mainView = new LinearLayout(this);
+		mainView.setOrientation(LinearLayout.VERTICAL);
 		ScrollView scrollView = new ScrollView(this);
 		scrollView.addView(topGroup);
 		filterGroup = new LinearLayout(this);
 		filterGroup.setOrientation(LinearLayout.HORIZONTAL);
 		filterGroup.setMinimumHeight(50);
-		mainView = new LinearLayout(this);
-		mainView.setOrientation(LinearLayout.VERTICAL);
-		// Ad
-		mainView.addView(adView);
+		
+		if(!pro){
+			adView.setAdUnitId(ADD_ID);
+			adView.setAdSize(AdSize.BANNER);
+			// Initiate a generic request.
+			AdRequest adRequest = new AdRequest.Builder().build();
+			// Load the adView with the ad request.
+			adView.loadAd(adRequest);
+			mainView.addView(adView);
+		}
+
 		mainView.addView(filterGroup);
 		mainView.addView(scrollView);
-
 	}
 
 	@Override

@@ -355,9 +355,11 @@ public class CPU extends PowerComponent {
 		try {
 			while ((line = in.readLine()) != null) {
 				if (line.startsWith("BogoMIPS")) {
+					in.close();
 					return Double.parseDouble(line.trim().split("[ :]+")[1]);
 				}
 			}
+			in.close();
 		} catch (IOException e) {
 			/* Failed to read from the cpu freq file. */
 		} catch (NumberFormatException e) {

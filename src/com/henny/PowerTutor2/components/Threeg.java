@@ -24,13 +24,9 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.telephony.TelephonyManager;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.RandomAccessFile;
 
 import com.henny.PowerTutor2.phone.PhoneConstants;
 import com.henny.PowerTutor2.service.IterationData;

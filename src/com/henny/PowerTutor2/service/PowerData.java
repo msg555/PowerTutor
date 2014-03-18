@@ -21,7 +21,6 @@ package com.henny.PowerTutor2.service;
 
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-import java.util.Vector;
 
 public abstract class PowerData {
   private int cachedPower;

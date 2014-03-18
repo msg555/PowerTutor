@@ -19,14 +19,20 @@ Please send inquiries to powertutor@umich.edu
 
 package com.henny.PowerTutor2.ui;
 
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.henny.PowerTutor2.R;
+
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 
 public class PowerTabs extends TabActivity {
+
+	
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.power_tabs);
@@ -34,7 +40,7 @@ public class PowerTabs extends TabActivity {
     Resources res = getResources();
     TabHost tabHost = getTabHost();
     TabHost.TabSpec spec;
-
+    
     // TODO: We could put in some icons on each of these two tabs.  Not sure if
     // we care enough or if it would look much better.
     Intent intent = new Intent(this, PowerViewer.class);

@@ -206,6 +206,7 @@ public class SystemInfo {
           }
         }
       }
+      rdr.close();
     } catch(IOException e) {
       Log.w(TAG, "Failed to manually read in process uid");
     }

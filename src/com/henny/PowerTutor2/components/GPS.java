@@ -229,6 +229,7 @@ public class GPS extends PowerComponent {
                 event = fin.read()) {
               gpsState.updateEvent(event, HOOK_LIBGPS);
             }
+            fin.close();
           } catch(IOException e) {
             e.printStackTrace();
           }
