@@ -1,93 +1,123 @@
 <?xml version="1.1" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="edu.umich.PowerTutor"
-      android:versionCode="15" android:versionName="1.5">
-  <application android:icon="@drawable/icon" android:label="@string/app_name">
-    <activity android:name=".ui.UMLogger"
-              android:label="@string/app_name"
-              android:screenOrientation="portrait" >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".ui.Help" >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".ui.PowerViewer" >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".ui.PowerTop"
-              android:label="Power Top" >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".ui.PowerPie" >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".ui.MiscView" >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".ui.PowerTabs"
-              android:theme="@android:style/Theme.NoTitleBar">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".ui.EditPreferences"
-              android:label="PowerTutor Options">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".ui.ViewerPreferences"
-              android:label="PowerTutor History Options">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".widget.Configure"
-              android:label="Configure PowerTutor Widget" >
-      <intent-filter>
-        <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".widget.DataSourceConfigure"
-              android:label="Configure Data Source">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-      </intent-filter>
-    </activity>
-    <receiver android:name=".ui.StartupReceiver">
-      <intent-filter>
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
-        <category android:name="android.intent.category.HOME" />
-      </intent-filter>
-    </receiver>
-    <service android:name=".service.UMLoggerService"></service>
-    <receiver android:name=".widget.PowerWidget" >
-      <intent-filter>
-          <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-      </intent-filter>
-      <meta-data android:name="android.appwidget.provider"
-                 android:resource="@xml/widget_info" />
-      </receiver>
-  </application>
+    package="com.henny.PowerTutor2"
+    android:versionCode="19"
+    android:versionName="2" >
 
-  <uses-sdk android:minSdkVersion="3" />
-  <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-</manifest> 
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.henny.PowerTutor2.ui.UMLogger"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.henny.PowerTutor2.ui.Help" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.henny.PowerTutor2.ui.PowerViewer" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.henny.PowerTutor2.ui.PowerTop"
+            android:label="Power Top" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.henny.PowerTutor2.ui.PowerPie" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.henny.PowerTutor2.ui.MiscView" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.henny.PowerTutor2.ui.PowerTabs"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.henny.PowerTutor2.ui.EditPreferences"
+            android:label="PowerTutor Options" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.henny.PowerTutor2.ui.ViewerPreferences"
+            android:label="PowerTutor History Options" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.henny.PowerTutor2.widget.Configure"
+            android:label="Configure PowerTutor Widget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.henny.PowerTutor2.widget.DataSourceConfigure"
+            android:label="Configure Data Source" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <receiver android:name="com.henny.PowerTutor2.ui.StartupReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.henny.PowerTutor2.service.UMLoggerService" >
+        </service>
+
+        <receiver android:name="com.henny.PowerTutor2.widget.PowerWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+        <activity android:name="com.purplebrain.adbuddiz.sdk.AdBuddizActivity" 
+               android:theme="@android:style/Theme.Translucent" />
+    </application>
+
+    <uses-sdk android:minSdkVersion="9" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+</manifest>

@@ -2,9 +2,7 @@ PowerTutor Project
 
 Model based power mobile power estimator by application
 
-Contact: powertutor@umich.edu
-
-Website: http://powertutor.org
+Contact: henny@uni-koblenz.de
 
 This package includes the PowerTutor source code.  The code responsible for
 uploading logs to our remote server has been removed and replaced by a stub that

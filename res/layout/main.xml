@@ -8,7 +8,7 @@
   <TextView android:id="@+id/s0"
       android:layout_width="fill_parent" 
       android:layout_height="wrap_content" 
-      android:text="PowerTutor 1.4"
+      android:text=""
       android:gravity="center"
       android:layout_weight="0.1"
       android:textSize="16pt"
