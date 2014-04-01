@@ -52,7 +52,6 @@ import java.io.IOException;
 
 import com.henny.PowerTutor2.phone.PhoneSelector;
 import com.henny.PowerTutor2.service.UMLoggerService;
-import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
 /** The main view activity for PowerTutor */
 public class UMLogger extends Activity {
@@ -62,7 +61,6 @@ public class UMLogger extends Activity {
 
 	public static final String SERVER_IP = "";
 	public static final int SERVER_PORT = 0;
-	public static final boolean pro = true;
 
 	private SharedPreferences prefs;
 	private Intent serviceIntent;
@@ -80,10 +78,7 @@ public class UMLogger extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		AdBuddiz.setPublisherKey("34075403-59eb-4d6c-9a44-702417b8792b");
-		if (!pro) {
-			AdBuddiz.cacheAds(this); // this = current Activity
-		}
+		
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 		serviceIntent = new Intent(this, UMLoggerService.class);
@@ -119,14 +114,6 @@ public class UMLogger extends Activity {
 
 	@Override
 	public void onResume() {
-		if (!pro) {
-			Random r = new Random();
-			int number = r.nextInt(101);
-			if (number % 12 == 0) {
-				Log.e(TAG, "" + number);
-				AdBuddiz.showAd(this);
-			}
-		}
 		super.onResume();
 		getApplicationContext().bindService(serviceIntent, conn, 0);
 		if (prefs.getBoolean("firstRun", true)) {

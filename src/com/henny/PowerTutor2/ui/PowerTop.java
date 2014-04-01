@@ -75,7 +75,7 @@ public class PowerTop extends Activity implements Runnable {
 	private static final CharSequence[] KEY_NAMES = { "Current power",
 			"Average power", "Energy usage" };
 
-	private final boolean pro=true;
+	private final boolean pro=false;
 	
 	private SharedPreferences prefs;
 	private int noUidMask;
@@ -237,6 +237,7 @@ public class PowerTop extends Activity implements Runnable {
 			byte[] rawUidInfo = counterService.getUidInfo(
 					prefs.getInt("topWindowType", Counter.WINDOW_TOTAL),
 					noUidMask | prefs.getInt("topIgnoreMask", 0));
+			//Log.i(TAG,"topIgnMask: "+prefs.getInt("topIgnoreMask", 0));
 			if (rawUidInfo != null) {
 				UidInfo[] uidInfos = (UidInfo[]) new ObjectInputStream(
 						new ByteArrayInputStream(rawUidInfo)).readObject();

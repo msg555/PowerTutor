@@ -99,7 +99,7 @@ public class PowerEstimator implements Runnable {
 	public PowerEstimator(UMLoggerService context) {
 		this.context = context;
 		prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		
+
 		powerComponents = new Vector<PowerComponent>();
 		powerFunctions = new Vector<PowerFunction>();
 		uidAppIds = new HashMap<Integer, String>();
@@ -389,18 +389,19 @@ public class PowerEstimator implements Runnable {
 									+ memInfo[1] + " " + memInfo[2] + " "
 									+ memInfo[3] + "\n");
 						}
-						UidInfo[] uidInfos = getUidInfo(prefs.getInt(
-								"topWindowType", Counter.WINDOW_TOTAL), 0);
 
-						String content = "";
-						for (UidInfo uidInfo : uidInfos) {
-							content = "TOTAL" + "-" + uidInfo.uid + "-"
-									+ sysInfo.getUidName(uidInfo.uid, pm) + " "
-									+ uidInfo.totalEnergy + "\n";
-							Log.i(TAG, content);
-							logStream.write(content);
-						}
+						/*
+						 * Mask: lcd: 14 cpu: 13 wifi:11 3g: 7
+						 * 
+						 * wifi&3g: 3 cpu&wifi&3g: 1 lcd&cpu&wifi&3g: 0
+						 */
 
+						logStream.write(getConsumtionOfApps(14, sysInfo, pm));
+						logStream.write(getConsumtionOfApps(13, sysInfo, pm));
+						logStream.write(getConsumtionOfApps(11, sysInfo, pm));
+						logStream.write(getConsumtionOfApps(7, sysInfo, pm));
+						
+						
 						for (int i = 0; i < components; i++) {
 							IterationData data = dataTemp[i];
 							if (data != null) {
@@ -422,7 +423,7 @@ public class PowerEstimator implements Runnable {
 												+ "\n");
 										powerData.writeLogDataInfo(logStream);
 									} else {
-										content = "";
+										String content = "";
 										if (powerComponents.get(i) instanceof CPU) {
 											content = name
 													+ "-"
@@ -442,7 +443,7 @@ public class PowerEstimator implements Runnable {
 													+ "-"
 													+ uid
 													+ " "
-													+ (long) Math
+					 								+ (long) Math
 															.round(powerData
 																	.getCachedPower())
 													+ "\n";
@@ -517,6 +518,63 @@ public class PowerEstimator implements Runnable {
 					Log.w(TAG, "Failed to flush log file on exit");
 				}
 		}
+	}
+
+	/*
+	 * Mask: lcd: 14 cpu: 13 wifi:11 3g: 7
+	 * 
+	 * wifi&3g: 3 cpu&wifi&3g: 1 lcd&cpu&wifi&3g: 0
+	 */
+
+	private String getConsumtionOfApps(int mask, SystemInfo sysInfo,
+			PackageManager pm) {
+		String content = "";
+		String description = "";
+		switch (mask) {
+		case 14: {
+			description = "LCD-TOTAL";
+			break;
+		}
+		case 13: {
+			description = "CPU-TOTAL";
+			break;
+		}
+		case 11: {
+			description = "WIFI-TOTAL";
+			break;
+		}
+		case 7: {
+			description = "3G-TOTAL";
+			break;
+		}
+		case 3: {
+			description = "WIFI3G";
+			break;
+		}
+		case 1: {
+			description = "CPUWIFI3G";
+			break;
+		}
+		case 0: {
+			description = "TOTAL";
+			break;
+		}
+		default: {
+			description = "CONS ";
+			break;
+		}
+		}
+
+		UidInfo[] uidInfos = getUidInfo(
+				prefs.getInt("topWindowType", Counter.WINDOW_TOTAL), mask);
+
+		for (UidInfo uidInfo : uidInfos) {
+			content += description + "-" + uidInfo.uid + "-"
+					+ sysInfo.getUidName(uidInfo.uid, pm) + " "
+					+ uidInfo.totalEnergy + "\n";
+		}
+
+		return content;
 	}
 
 	public void plug(boolean plugged) {
