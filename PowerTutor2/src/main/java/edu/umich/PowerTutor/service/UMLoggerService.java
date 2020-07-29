@@ -25,6 +25,7 @@ import edu.umich.PowerTutor.util.BatteryStats;
 import edu.umich.PowerTutor.util.SystemInfo;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -32,12 +33,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
@@ -95,6 +99,8 @@ public class UMLoggerService extends Service{
     super.onStartCommand(intent, flags, startId);
 //android.os.Debug.startMethodTracing("pt.trace");
 
+    createNotificationChannel();
+
     if (intent.getBooleanExtra("stop", false)) {
       stopSelf();
       return START_NOT_STICKY;
@@ -106,6 +112,18 @@ public class UMLoggerService extends Service{
     estimatorThread.start();
 
     return START_NOT_STICKY;
+  }
+
+  private void createNotificationChannel() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      NotificationChannel serviceChannel = new NotificationChannel(
+              CHANNEL_ID,
+              "Foreground Service Channel",
+              NotificationManager.IMPORTANCE_DEFAULT
+      );
+      NotificationManager manager = getSystemService(NotificationManager.class);
+      manager.createNotificationChannel(serviceChannel);
+    }
   }
   
   @Override
@@ -136,7 +154,7 @@ public class UMLoggerService extends Service{
     } catch(NoSuchMethodException e) {
     }
     if(!foregroundSet) {
-      setForeground(false);
+      //setForeground(false); // TODO: Uncommented
       notificationManager.cancel(NOTIFICATION_ID);
     }
 
@@ -162,10 +180,19 @@ public class UMLoggerService extends Service{
     /* the next two lines initialize the Notification, using the
      * configurations above.
      */
-    notification = new Notification(icon, tickerText, when);
+    Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle(contentTitle)
+            .setContentText(contentText)
+            .setWhen(when)
+            .setSmallIcon(R.drawable.icon)
+            .setContentIntent(contentIntent)
+            .build();
+    notification.tickerText = tickerText;
     notification.iconLevel = 2;
-    notification.setLatestEventInfo(context, contentTitle,
-                                    contentText, contentIntent);
+
+    //notification = new Notification(icon, tickerText, when);
+    //notification.iconLevel = 2;
+    //notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 
     /* We need to set the service to run in the foreground so that system
      * won't try to destroy the power logging service except in the most
@@ -187,7 +214,8 @@ public class UMLoggerService extends Service{
     } catch(NoSuchMethodException e) {
     }
     if(!foregroundSet) {
-      setForeground(true);
+      //setForeground(true);
+      startForeground(1, notification);
       notificationManager.notify(NOTIFICATION_ID, notification);
     }
   }
@@ -197,6 +225,9 @@ public class UMLoggerService extends Service{
    * 8% cpu utilization penalty.
    */
   public void updateNotification(int level, double totalPower) {
+    // TODO: Updating notifcation not working right now
+    if (true) return;
+
     notification.icon = R.drawable.level;   
     notification.iconLevel = level;
 
@@ -232,8 +263,8 @@ public class UMLoggerService extends Service{
     notificationIntent.putExtra("isFromIcon", true);
     PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                                                 notificationIntent, 0);
-    notification.setLatestEventInfo(this, contentTitle, contentText,
-                                    contentIntent);
+    // TODO: Uncommented
+    //notification.setLatestEventInfo(this, contentTitle, contentText, contentIntent);
     notificationManager.notify(NOTIFICATION_ID, notification);
   }
 
