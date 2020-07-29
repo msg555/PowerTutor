@@ -20,7 +20,6 @@ Please send inquiries to powertutor@umich.edu
 package edu.umich.PowerTutor.service;
 
 import edu.umich.PowerTutor.R;
-import edu.umich.PowerTutor.ui.PowerTabs;
 import edu.umich.PowerTutor.ui.UMLogger;
 import edu.umich.PowerTutor.util.BatteryStats;
 import edu.umich.PowerTutor.util.SystemInfo;
@@ -33,7 +32,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
@@ -49,6 +47,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 
 public class UMLoggerService extends Service{
+  public static final String CHANNEL_ID = "edu.umich.PowerTutor.channel";
   private static final String TAG = "UMLoggerService";
 
   private static final int NOTIFICATION_ID = 1;
@@ -92,19 +91,21 @@ public class UMLoggerService extends Service{
   }
   
   @Override
-  public void onStart(Intent intent, int startId) {
-    super.onStart(intent, startId);
+  public int onStartCommand(Intent intent, int flags, int startId) {
+    super.onStartCommand(intent, flags, startId);
 //android.os.Debug.startMethodTracing("pt.trace");
 
-    if(intent.getBooleanExtra("stop", false)) {
+    if (intent.getBooleanExtra("stop", false)) {
       stopSelf();
-      return;
-    } else if(estimatorThread != null) {
-      return;
+      return START_NOT_STICKY;
+    } else if (estimatorThread != null) {
+      return START_NOT_STICKY;
     }
     showNotification();
     estimatorThread = new Thread(powerEstimator);
     estimatorThread.start();
+
+    return START_NOT_STICKY;
   }
   
   @Override
@@ -116,6 +117,7 @@ public class UMLoggerService extends Service{
         try {
           estimatorThread.join();
         } catch(InterruptedException e) {
+          e.printStackTrace();
         }
       }
     }
