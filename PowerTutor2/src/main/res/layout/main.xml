@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background = "@drawable/background"
+  >
+  <TextView android:id="@+id/s0"
+      android:layout_width="fill_parent" 
+      android:layout_height="wrap_content" 
+      android:text="PowerTutor 1.4"
+      android:gravity="center"
+      android:layout_weight="0.1"
+      android:textSize="16pt"
+      android:textColor="#FFFFFF"
+    />
+  <FrameLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0px"
+      android:layout_weight="1"
+    />
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+  >
+    <FrameLayout
+        android:layout_width="0px"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+      />
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="0px"
+      android:layout_height="fill_parent"
+      android:layout_weight="3"
+    >
+      <Button android:id="@+id/servicestartbutton" 
+          android:layout_weight="0.25"
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content" 
+          android:textSize="8pt"
+        />
+      <Button android:id="@+id/appviewerbutton"
+          android:layout_weight="0.25"
+          android:text="Application Viewer"
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content" 
+          android:textSize="8pt"
+        />
+      <Button android:id="@+id/sysviewerbutton"
+          android:layout_weight="0.25"
+          android:text="System Viewer"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content" 
+          android:textSize="8pt"
+        />
+      <Button android:id="@+id/helpbutton"
+          android:text = "Help"
+          android:layout_weight="0.25"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content" 
+          android:textSize="8pt"
+        />   
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="0px"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+      />
+  </LinearLayout>
+  <FrameLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0px"
+      android:layout_weight="1"
+    />
+</LinearLayout>
+
