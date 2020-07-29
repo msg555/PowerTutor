@@ -1,0 +1,43 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* LICENCE
+* Makefile
+* README
+* android-9.jar
+* debug.keystore
+* default.properties
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => PowerTutor2/src/main/AndroidManifest.xml
+* jni/ => PowerTutor2/src/main/jni/
+* libs/achartengine-1.0.0.jar => PowerTutor2/libs/achartengine-1.0.0.jar
+* res/ => PowerTutor2/src/main/res/
+* src/ => PowerTutor2/src/main/java/
+* src/edu/umich/PowerTutor/PowerNotifications.aidl => PowerTutor2/src/main/aidl/edu/umich/PowerTutor/PowerNotifications.aidl
+* src/edu/umich/PowerTutor/service/ICounterService.aidl => PowerTutor2/src/main/aidl/edu/umich/PowerTutor/service/ICounterService.aidl
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

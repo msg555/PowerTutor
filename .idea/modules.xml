@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PowerTutorII.iml" filepath="$PROJECT_DIR$/.idea/modules/PowerTutorII.iml" group="PowerTutorII" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PowerTutor2/PowerTutorII-PowerTutor2.iml" filepath="$PROJECT_DIR$/.idea/modules/PowerTutor2/PowerTutorII-PowerTutor2.iml" group="PowerTutorII/PowerTutor2" />
+    </modules>
+  </component>
+</project>
