@@ -45,6 +45,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import edu.umich.PowerTutor.service.ICounterService;
 import edu.umich.PowerTutor.service.PowerEstimator;
 import edu.umich.PowerTutor.service.UMLoggerService;

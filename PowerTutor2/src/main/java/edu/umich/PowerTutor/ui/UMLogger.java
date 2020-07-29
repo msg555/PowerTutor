@@ -29,29 +29,20 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
-import android.os.RemoteException;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,11 +52,6 @@ import java.util.zip.InflaterInputStream;
 import java.io.BufferedOutputStream;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 /** The main view activity for PowerTutor*/
 public class UMLogger extends Activity  {
@@ -342,7 +328,7 @@ public class UMLogger extends Activity  {
   private class CounterServiceConnection implements ServiceConnection {
     public void onServiceConnected(ComponentName className, 
                                    IBinder boundService) {
-      counterService = ICounterService.Stub.asInterface((IBinder)boundService);
+      counterService = ICounterService.Stub.asInterface((IBinder) boundService);
       serviceStartButton.setText("Stop Profiler");
       serviceStartButton.setEnabled(true);
       appViewerButton.setEnabled(true);

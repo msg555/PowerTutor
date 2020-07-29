@@ -75,13 +75,16 @@
         <action android:name="android.intent.action.MAIN" />
       </intent-filter>
     </activity>
+
     <receiver android:name=".ui.StartupReceiver">
       <intent-filter>
         <action android:name="android.intent.action.BOOT_COMPLETED" />
         <category android:name="android.intent.category.HOME" />
       </intent-filter>
     </receiver>
+
     <service android:name=".service.UMLoggerService" />
+
     <receiver android:name=".widget.PowerWidget" >
       <intent-filter>
           <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
